@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @ToString
 public class AuthorizationLog {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @Column(name = "transaction_id", nullable = false)

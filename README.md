@@ -27,7 +27,7 @@ cc-transaction-system/
 ## Prerequisites
 - Docker
 - Docker Compose
-- JDK 11
+- JDK 17
 - Maven
 
 ## Setup
@@ -52,8 +52,8 @@ cc-transaction-system/
 ### Step 3: Monitor the Logs
 1. We can monitor the logs to see the transaction processing:
    ```sh
-   docker-compose logs -f transaction-producer
-   docker-compose logs -f transaction-consumer
+   docker-compose logs -f producer
+   docker-compose logs -f consumer
 
 
 ## Testing Dead Letter Queue (DLQ)
@@ -65,19 +65,22 @@ cc-transaction-system/
 ## Metrics
 - Metrics are exposed via Spring Boot Actuator endpoints. We can access them at:
    ```sh
-   http://localhost:8082/actuator/metrics
+   http://localhost:8084/actuator/metrics
   
 ## Verify Authorization
 - By accessing consumer API from any webclient (I'm using Talend API Tester) we can verify authorization (When we are trying to access without Authorization header, will get 401 "Unauthorized")
    ```sh
-   GET: http://localhost:8082/api/transactions
+   GET: http://localhost:8084/api/transactions
 
 ![img.png](img.png)
 - We can provide Authorization Header by providing credentials (Username: admin , Password: password)
+
 ![img_1.png](img_1.png)
 
 - Now, when we are hitting the same API will get response like below (Pagination also added)
+
 ![img_2.png](img_2.png)
+
 ![img_3.png](img_3.png)
 
 
